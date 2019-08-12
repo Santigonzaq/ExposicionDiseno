@@ -29,6 +29,7 @@ Posteriomente se crean las clases que extienden al decorador. Estas clases son l
 
 ### Forma de instanciar:
 A la hora de instanciar, se encadenan recursivamente los llamados de la creación, según que funcionalidades extras (concreteDecorators) quiero establecer en nuevo objeto.
-###Ejemplo:  
+### Ejemplo:  
   **Widget widget =new BorderDecorator(new ScrollDecorator(new TextField(80, 24)));**
-  #### ->Creando un objeto TextField, con las funcionalidades extendidas dadar por BorderDecorator y ScrollDecorator.
+  
+  ##### ->Creando un objeto TextField, con las funcionalidades extendidas dadar por BorderDecorator y ScrollDecorator.
