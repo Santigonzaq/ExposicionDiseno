@@ -1,0 +1,62 @@
+package exposicion2;
+
+/**
+ *
+ * @author usuario
+ */
+
+class Documento {
+    public void operacion() {
+        System.out.println("Creando documento");
+    }
+    public void close() {
+        System.out.println("Cerrando documento");
+    }
+}
+
+abstract class DocumentoCodificado extends Documento {
+    private Documento documento;
+    public DocumentoCodificado(Documento componente) {
+        this.documento = componente;
+    }
+    public void operacion() {
+        documento.operacion();
+    }
+}
+
+class DecoradorConcretoA extends DocumentoCodificado {
+    public DecoradorConcretoA(Documento componente) {
+        super(componente);
+    }
+    public void operacion() {
+        super.operacion();
+        System.out.println("Separador al documento");
+    }
+}
+
+class DecoradorConcretoB extends DocumentoCodificado {
+    public DecoradorConcretoB(Documento componente) {
+        super(componente);
+    }
+    public void operacion() {
+        super.operacion();
+        System.out.println("Contando lineas del documento");
+    }
+}
+
+public class Exposicion2 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+        Documento c = new Documento();
+        DecoradorConcretoA d1 = new DecoradorConcretoA(c);
+        DecoradorConcretoB d2;
+        d2 = new DecoradorConcretoB(d1);
+        d2.operacion();
+        d2.close();
+    }
+    
+}
