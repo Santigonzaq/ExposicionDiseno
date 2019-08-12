@@ -1,0 +1,82 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package exposicion1;
+
+/**
+ *
+ * @author usuario
+ */
+
+
+    
+    
+    // 1. "Interfaz común para todos"
+interface Widget {
+    void draw();
+}
+
+// 3. Clase base que implementa la interfaz
+class TextField implements Widget {
+    private int width, height;
+    
+//Constructor propio de esta clase
+    public TextField(int width, int height) {
+        this.width = width;
+        this.height = height;
+    }
+    //implementación del metodo de la interfaz
+    public void draw() {
+        System.out.println("TextField: " + width + ", " + height);
+    }
+}
+
+// 2. Clase abstracta de segundo nivel que también implementa la interface
+abstract class Decorator implements Widget {
+    // 4. Posee como atributo un objeto que quiero decorar
+    private Widget widget;
+    
+    //El constructor recibe objeto tipo interfaz y lo setea.
+    public Decorator(Widget widget) {
+        this.widget = widget;
+    }
+
+    // 5. Delega el llamado del metodo, al del objeto tipo interfaz
+    public void draw() {
+        widget.draw();
+    }
+}
+
+// 6. Ahora sí, se extiende del decorador, para poner las funcionalidades opcionales. Modificación de metodos
+class BorderDecorator extends Decorator {
+    public BorderDecorator(Widget widget) {
+        super(widget);
+    }
+    public void draw() {
+        // 7. // 7. Delegar al llamado del metodo base y añadir un extra
+        super.draw();
+        System.out.println("Soy de borde");
+        
+    }
+}
+
+// 6. Optional embellishment
+class ScrollDecorator extends Decorator {
+    public ScrollDecorator(Widget widget) {
+        super(widget);
+    }
+    public void draw() {
+        super.draw(); // 7. Delegar al llamado del metodo base y añadir un extra
+        System.out.println("Soy de scroll");
+    }
+}
+
+public class DecoratorDemo {
+    public static void main(String[] args) {
+        // 8. Cliente decide como quiere componer el objeto a crear, con la configuración que quiera.
+        Widget widget = new BorderDecorator(new BorderDecorator(new ScrollDecorator(new TextField(80, 24))));
+        widget.draw();
+    }
+}
