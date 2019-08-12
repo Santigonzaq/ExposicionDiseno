@@ -1,6 +1,4 @@
-
-
-**#Patron de diseño Decorator**
+# Patron de diseño Decorator
 
 **Patron comportamental**
 
