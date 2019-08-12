@@ -11,7 +11,14 @@ define la interfaz de los objetos a los que se les puede añadir responsabilidad
 ### Decorator: 
 Mantiene una referencia a un objeto Component (al que voy a decorar) y tiene su misma interfaz.
 
-## ConcreteDecorator: 
+### ConcreteDecorator: 
 añade responsabilidades al componente, en otras palabras, lo decora.
 
+## USO:
+1.Se debe definir una interfaz o clase, la cual me va a representar las funcionalidades que los objetos que quiero decorar van a implementar.
 
+2.Se debe crear la clase abstraca principal, la cual será el decorador. Esta clase también implementa la interfaz y adicionalmente, mantiene como atributo una referencia hacia la clase de los objetos que quiero decorar.
+
+3.Se debe crear la clase principal, la cual es la que representa los objetos que quiero decorar, esta clase también implementa la interfaz
+
+4. Posteriomente se crean las clases que extienden al decorador. Estas clases son las que añaden funcionalidades extra a los métodos definidos en la interfaz, así como también pueden agregar atributos.
